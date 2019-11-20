@@ -2,7 +2,8 @@
 
 arch = case RUBY_PLATFORM
   when /64.*linux/
-    RUBY_PLATFORM.match?(/linux-musl/) ? 'alpine-linux-amd64' : 'linux-amd64'
+    # match? is only available in ruby 2.4+
+    RUBY_PLATFORM.match(/linux-musl/) ? 'alpine-linux-amd64' : 'linux-amd64'
   when /darwin/
     'darwin-x86_64'
   else
